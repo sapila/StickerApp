@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+ 
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  .draggable { width: 150px; height: 150px; padding: 0.5em;border:1px black solid;float: left;background-color:yellow; }
+  #trash{position: fixed;top: 20px;right:20px;width:130px;height:130px;background-image: url("http://findicons.com/files/icons/685/flat/128/24_empty_trash.png");}
+  #newNote{font-size: 150%;}
+     </style>
+  <script>
+  $(document).ready(function () {
+
+    $('#newNote').on('click', function () {
+        $('#noteBoard').append($("<div class='draggable' contenteditable='true'></div>"));
+        $('.draggable').draggable();
+    });
+    
+    
+     $('#trash').droppable({
+            over: function(event, ui) {
+                ui.draggable.remove();
+            }
+        });
+    });
+  </script>
+</head>
+<body>
+ <div id="header">
+   <button id="newNote">New Note</button>
+ </div>
+ <div id="noteBoard">
+
+
+</div> 
+<div id="trash"></div>
+</body>
+</html>
